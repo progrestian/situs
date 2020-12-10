@@ -1,0 +1,26 @@
+@use 'mixins'
+@use 'elements'
+@use 'izin'
+
+.wrapper
+    position: absolute
+    left: 25%
+    top: 25%
+    transform: translate(-25%, -25%)
+    width: max-content
+    display: grid
+    grid-template-columns: auto auto
+
+    > *:nth-child(odd)
+        margin-right: 1rem
+        font-weight: bold
+        color: #fff
+
+    > *:nth-child(2n+4)
+        @media (orientation: landscape)
+            @include mixins.row
+        @media (orientation: portrait)
+            @include mixins.column
+
+    > *:not(:nth-child(-n+2))
+        margin-top: 1rem

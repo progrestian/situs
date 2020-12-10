@@ -1,0 +1,19 @@
+@mixin row
+    display: flex
+    flex-direction: row
+
+    > *:not(:first-child)
+        margin-left: 1rem
+
+@mixin column
+    display: flex
+    flex-direction: column
+
+    > *:not(:first-child)
+        margin-top: 1rem
+
+.row
+    @include row
+
+.column
+    @include column

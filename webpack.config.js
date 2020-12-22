@@ -11,7 +11,7 @@ const prod = process.env.NODE_ENV === 'production'
 module.exports = env => {
   return {
     mode: !prod ? 'development' : 'production',
-    watch: !prod ? env.watch : false,
+    watch: !prod ? env?.watch : false,
     devtool: !prod ? 'inline-source-map' : undefined,
     resolve: {
       modules: [

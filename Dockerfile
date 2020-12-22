@@ -1,8 +1,12 @@
-FROM node:lts-alpine
-ENV NODE_ENV=production
+FROM node:lts-alpine AS builder
 WORKDIR /situs
-COPY package*.json ./
+ENV NODE_ENV=production
+COPY package.json package-lock.json ./
 RUN npm ci --production
 COPY . .
 RUN npm run build
+
+FROM alpine
+WORKDIR /situs
+COPY --from=builder /situs/dist ./
 
